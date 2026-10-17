@@ -1,0 +1,9 @@
+// Run with: noob examples/hello.noob
+
+queue greet(name) {
+    gg "gg wp, " + name;
+}
+
+farm (vibe i = 0; i < 3; i = i + 1) {
+    chat(greet("player" + i));
+}

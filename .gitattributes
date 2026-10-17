@@ -1,0 +1,7 @@
+# Normalize line endings so Windows/macOS/Linux contributors don't fight over CRLF.
+* text=auto eol=lf
+
+*.cmd text eol=crlf
+*.png binary
+*.vsix binary
+*.rar binary

@@ -1,0 +1,92 @@
+# ===========================
+# Dependencies
+# ===========================
+node_modules/
+
+# ===========================
+# Build Output
+# ===========================
+dist/
+build/
+out/
+
+# ===========================
+# TypeScript
+# ===========================
+*.tsbuildinfo
+
+# ===========================
+# Logs
+# ===========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===========================
+# Environment Variables
+# ===========================
+.env
+.env.local
+.env.*.local
+
+# ===========================
+# IDEs
+# ===========================
+.vscode/
+.idea/
+
+# Keep VS Code recommended extensions/settings if you want
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===========================
+# Temporary Files
+# ===========================
+tmp/
+temp/
+.cache/
+
+# ===========================
+# Coverage
+# ===========================
+coverage/
+
+# ===========================
+# npm
+# ===========================
+.npm/
+
+# ===========================
+# Optional Runtime Files
+# ===========================
+*.pid
+*.seed
+*.pid.lock
+
+# ===========================
+# Test Output
+# ===========================
+*.lcov
+# ===========================
+# Packaged VS Code extension
+# ===========================
+*.vsix
+*.tgz
+
+# ===========================
+# Archives / backups
+# ===========================
+*.rar
+*.zip

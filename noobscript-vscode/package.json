@@ -1,0 +1,85 @@
+{
+  "name": "noobscript",
+  "displayName": "NoobScript",
+  "description": "Syntax highlighting, file icon and one-click run for NoobScript (.noob)",
+  "version": "0.1.0",
+  "publisher": "noobscript",
+  "license": "ISC",
+  "icon": "icons/icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages"],
+  "keywords": ["noobscript", "noob", "language", "gaming"],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "languages": [
+      {
+        "id": "noobscript",
+        "aliases": ["NoobScript", "noobscript"],
+        "extensions": [".noob"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/noob-file.svg",
+          "dark": "./icons/noob-file.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "noobscript",
+        "scopeName": "source.noobscript",
+        "path": "./syntaxes/noobscript.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "noobscript.runFile",
+        "title": "Run NoobScript File",
+        "category": "NoobScript",
+        "icon": "$(play)"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "noobscript.runFile",
+          "when": "resourceLangId == noobscript",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "noobscript.runFile",
+          "when": "resourceLangId == noobscript",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "noobscript.runFile",
+          "when": "editorLangId == noobscript"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "noobscript.runFile",
+        "key": "ctrl+f5",
+        "mac": "cmd+f5",
+        "when": "editorLangId == noobscript"
+      }
+    ],
+    "configuration": {
+      "title": "NoobScript",
+      "properties": {
+        "noobscript.command": {
+          "type": "string",
+          "default": "noob",
+          "description": "Command used to run .noob files (install it with: npm install -g noobscript-lang)."
+        }
+      }
+    }
+  }
+}

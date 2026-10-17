@@ -1,0 +1,31 @@
+{
+  "name": "noobscript-lang",
+  "version": "1.0.0",
+  "description": "NoobScript — a programming language with gaming slang syntax",
+  "keywords": ["noobscript", "programming-language", "interpreter", "gaming"],
+  "author": "Hassaan Tole",
+  "license": "ISC",
+  "bin": {
+    "noob": "dist/cli/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "start": "node dist/cli/main.js",
+    "dev": "tsx src/cli/main.ts",
+    "example": "tsx src/cli/main.ts examples/test.noob",
+    "package:vscode": "cd noobscript-vscode && npx @vscode/vsce package --allow-missing-repository",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}

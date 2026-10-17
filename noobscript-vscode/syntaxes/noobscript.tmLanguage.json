@@ -1,0 +1,165 @@
+{
+  "name": "NoobScript",
+  "scopeName": "source.noobscript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#function-declaration" },
+    { "include": "#variable-declaration" },
+    { "include": "#keywords-control" },
+    { "include": "#keywords-declaration" },
+    { "include": "#keywords-other" },
+    { "include": "#constants" },
+    { "include": "#builtins" },
+    { "include": "#function-call" },
+    { "include": "#operators" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.noobscript",
+          "match": "//.*$"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.noobscript",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.noobscript",
+          "match": "\\\\[ntr0\"\\\\]"
+        },
+        {
+          "name": "invalid.illegal.unknown-escape.noobscript",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.noobscript",
+      "match": "\\b\\d+(\\.\\d+)?\\b"
+    },
+    "function-declaration": {
+      "comment": "queue name(a, b)",
+      "begin": "\\b(queue)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+      "beginCaptures": {
+        "1": { "name": "storage.type.function.noobscript" },
+        "2": { "name": "entity.name.function.noobscript" },
+        "3": { "name": "punctuation.definition.parameters.begin.noobscript" }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.parameters.end.noobscript" }
+      },
+      "patterns": [
+        { "name": "variable.parameter.noobscript", "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b" },
+        { "name": "punctuation.separator.comma.noobscript", "match": "," }
+      ]
+    },
+    "variable-declaration": {
+      "patterns": [
+        {
+          "comment": "lockedin NAME = ...",
+          "match": "\\b(lockedin)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "storage.type.noobscript" },
+            "2": { "name": "variable.other.constant.noobscript" }
+          }
+        },
+        {
+          "comment": "vibe name = ...",
+          "match": "\\b(vibe)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "storage.type.noobscript" },
+            "2": { "name": "variable.other.declaration.noobscript" }
+          }
+        }
+      ]
+    },
+    "keywords-control": {
+      "patterns": [
+        {
+          "name": "keyword.control.conditional.noobscript",
+          "match": "\\b(skillcheck|skillissue|retry|rank)\\b"
+        },
+        {
+          "name": "keyword.control.loop.noobscript",
+          "match": "\\b(grind|farm|ragequit)\\b"
+        },
+        {
+          "name": "keyword.control.flow.noobscript",
+          "match": "\\b(gg|try|catch|finally)\\b"
+        }
+      ]
+    },
+    "keywords-declaration": {
+      "name": "storage.type.noobscript",
+      "match": "\\b(vibe|lockedin|queue|guild)\\b"
+    },
+    "keywords-other": {
+      "patterns": [
+        {
+          "name": "keyword.other.new.noobscript",
+          "match": "\\b(spawn)\\b"
+        },
+        {
+          "name": "support.function.builtin.noobscript",
+          "match": "\\b(chat)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.noobscript",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.language.null.noobscript",
+          "match": "\\b(nihil|null)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "name": "support.function.builtin.noobscript",
+      "match": "\\b(clock|len|rng|str|num)\\b(?=\\s*\\()"
+    },
+    "function-call": {
+      "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+      "captures": {
+        "1": { "name": "entity.name.function.call.noobscript" }
+      }
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.logical.noobscript",
+          "match": "&&|\\|\\||!(?!=)"
+        },
+        {
+          "name": "keyword.operator.comparison.noobscript",
+          "match": "==|!=|>=|<=|>|<"
+        },
+        {
+          "name": "keyword.operator.assignment.noobscript",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arithmetic.noobscript",
+          "match": "\\+|\\-|\\*|/|%"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.terminator.statement.noobscript", "match": ";" },
+        { "name": "punctuation.separator.comma.noobscript", "match": "," }
+      ]
+    }
+  }
+}

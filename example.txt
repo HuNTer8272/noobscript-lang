@@ -1,0 +1,30 @@
+? NoobScript
+
+!Syntax 
+let -> vibe 
+const -> lockedin
+
+if -> skillcheck
+else -> skillissue
+else if -> retry 
+
+switch -> rank
+
+return -> gg
+break -> ragequit
+
+while -> grind 
+for -> farm
+
+try -> 
+catch -> 
+finally ->
+
+print -> chat 
+
+func -> queue
+
+TODO: OOP
+class -> guild 
+
+new -> spawn 

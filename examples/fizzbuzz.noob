@@ -1,0 +1,8 @@
+// Run with: noob examples/fizzbuzz.noob
+
+farm (vibe i = 1; i <= 15; i = i + 1) {
+    skillcheck (i % 15 == 0) chat("FizzBuzz");
+    retry (i % 3 == 0) chat("Fizz");
+    retry (i % 5 == 0) chat("Buzz");
+    skillissue chat(i);
+}
