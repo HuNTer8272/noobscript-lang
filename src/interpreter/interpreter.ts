@@ -73,7 +73,11 @@ export class Interpreter {
     private environment: Environment;
     private returnValue: any = null;
 
-    constructor(private readonly globals: Environment = new Environment()) {
+    constructor(
+        private readonly globals: Environment = new Environment(),
+        // Where `chat(...)` writes. Injectable so tests and embedders can capture output.
+        private readonly out: (text: string) => void = console.log
+    ) {
         this.environment = globals;
     }
 
@@ -101,7 +105,7 @@ export class Interpreter {
                 return Signal.Normal;
             }
             case 'Print':
-                console.log(stringify(this.evaluate(stmt.expression)));
+                this.out(stringify(this.evaluate(stmt.expression)));
                 return Signal.Normal;
             case 'ExpressionStmt':
                 this.evaluate(stmt.expression);

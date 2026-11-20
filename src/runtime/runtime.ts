@@ -23,9 +23,10 @@ function createGlobals(): Environment {
     });
 
     native('rng', 2, ([min, max]) => {
-        if (typeof min !== 'number' || typeof max !== 'number') {
-            throw new Error('rng() expects two numbers.');
+        if (!Number.isInteger(min) || !Number.isInteger(max)) {
+            throw new Error('rng() expects two whole numbers.');
         }
+        if (min > max) throw new Error(`rng() needs min <= max, got ${min} and ${max}.`);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     });
 
@@ -33,7 +34,7 @@ function createGlobals(): Environment {
 
     native('num', 1, ([val]) => {
         const n = typeof val === 'string' && val.trim() !== '' ? Number(val) : val;
-        if (typeof n !== 'number' || Number.isNaN(n)) {
+        if (typeof n !== 'number' || !Number.isFinite(n)) {
             throw new Error(`num() can't convert '${stringify(val)}' to a number.`);
         }
         return n;
@@ -46,8 +47,19 @@ function createGlobals(): Environment {
 // Wires lexer -> parser -> resolver -> interpreter together and owns
 // the globals so a REPL can reuse the same environment across inputs.
 
+export interface RuntimeIO {
+    out?: (text: string) => void; // program output (`chat`)
+    err?: (text: string) => void; // error reports
+}
+
 export class Runtime {
-    private readonly interpreter = new Interpreter(createGlobals());
+    private readonly interpreter: Interpreter;
+    private readonly err: (text: string) => void;
+
+    constructor({ out = console.log, err = console.error }: RuntimeIO = {}) {
+        this.interpreter = new Interpreter(createGlobals(), out);
+        this.err = err;
+    }
 
     // Runs a full source string end-to-end. Returns false if any error was reported.
     public run(source: string): boolean {
@@ -70,7 +82,7 @@ export class Runtime {
         } catch (err) {
             if (err instanceof NoobError) return this.report([err]);
             if (err instanceof RangeError && /call stack/i.test(err.message)) {
-                console.error('Runtime error: Stack overflow — a queue (function) recursed too deeply.');
+                this.err('Runtime error: Stack overflow — a queue (function) recursed too deeply.');
                 return false;
             }
             throw err; // a bug in the interpreter itself
@@ -78,7 +90,7 @@ export class Runtime {
     }
 
     private report(errors: NoobError[]): false {
-        for (const err of errors) console.error(err.format());
+        for (const error of errors) this.err(error.format());
         return false;
     }
 }

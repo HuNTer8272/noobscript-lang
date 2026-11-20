@@ -3,22 +3,43 @@
   "displayName": "NoobScript",
   "description": "Syntax highlighting, file icon and one-click run for NoobScript (.noob)",
   "version": "0.1.0",
-  "publisher": "noobscript",
+  "publisher": "hunter8272",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuNTer8272/noobscript-lang.git",
+    "directory": "noobscript-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/HuNTer8272/noobscript-lang/issues"
+  },
+  "homepage": "https://github.com/HuNTer8272/noobscript-lang#readme",
   "icon": "icons/icon.png",
   "engines": {
     "vscode": "^1.75.0"
   },
-  "categories": ["Programming Languages"],
-  "keywords": ["noobscript", "noob", "language", "gaming"],
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "noobscript",
+    "noob",
+    "language",
+    "gaming"
+  ],
   "main": "./extension.js",
   "activationEvents": [],
   "contributes": {
     "languages": [
       {
         "id": "noobscript",
-        "aliases": ["NoobScript", "noobscript"],
-        "extensions": [".noob"],
+        "aliases": [
+          "NoobScript",
+          "noobscript"
+        ],
+        "extensions": [
+          ".noob"
+        ],
         "configuration": "./language-configuration.json",
         "icon": {
           "light": "./icons/noob-file.svg",

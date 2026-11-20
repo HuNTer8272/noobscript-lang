@@ -59,9 +59,11 @@ const args = process.argv.slice(2);
 
 if (!isMainThread) {
     runFile(workerData.path);
-} else if (args[0] === "-h" || args[0] === "--help" || args.length > 1) {
+} else if (args[0] === "-h" || args[0] === "--help") {
     console.log(USAGE);
-    if (args.length > 1) process.exitCode = 64;
+} else if (args.length > 1 || args[0]?.startsWith("-")) {
+    console.error(USAGE);
+    process.exitCode = 64; // EX_USAGE
 } else if (args.length === 1) {
     runFileInWorker(args[0]);
 } else {

@@ -2,9 +2,22 @@
   "name": "noobscript-lang",
   "version": "1.0.0",
   "description": "NoobScript — a programming language with gaming slang syntax",
-  "keywords": ["noobscript", "programming-language", "interpreter", "gaming"],
+  "keywords": [
+    "noobscript",
+    "programming-language",
+    "interpreter",
+    "gaming"
+  ],
   "author": "Hassaan Tole",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuNTer8272/noobscript-lang.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HuNTer8272/noobscript-lang/issues"
+  },
+  "homepage": "https://github.com/HuNTer8272/noobscript-lang#readme",
   "bin": {
     "noob": "dist/cli/main.js"
   },
@@ -20,8 +33,8 @@
     "start": "node dist/cli/main.js",
     "dev": "tsx src/cli/main.ts",
     "example": "tsx src/cli/main.ts examples/test.noob",
-    "package:vscode": "cd noobscript-vscode && npx @vscode/vsce package --allow-missing-repository",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "package:vscode": "cd noobscript-vscode && npx @vscode/vsce package",
+    "test": "node --import tsx --test \"test/**/*.test.ts\""
   },
   "devDependencies": {
     "@types/node": "^26.1.0",
